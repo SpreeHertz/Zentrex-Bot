@@ -25,6 +25,7 @@
     "discord-ytdl-core": "^5.0.2",
     "discord.js": "^12.5.3",
     "enmap": "^5.8.4",
+    "eslint": "^8.0.1",
     "express": "^4.17.1",
     "ffmpeg": "^0.0.4",
     "ffmpeg-static": "^4.3.0",
@@ -48,6 +49,7 @@
     "node-fetch": "^2.6.1",
     "node-os-utils": "^1.3.5",
     "node-superfetch": "^0.1.11",
+    "nodemon": "^2.0.14",
     "novelcovid": "^3.0.0",
     "parse-ms": "^2.1.0",
     "path": "^0.12.7",
@@ -68,9 +70,9 @@
     "ytdl-core": "^4.5.0",
     "ytdl-core-discord": "^1.3.0"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nodemon .",
+    "lint": "eslint ."
   },
   "author": "Manav Garg",
   "license": "ISC"
