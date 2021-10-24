@@ -1,5 +1,5 @@
 const db = require("old-wio.db");
-const Discord = require ("discord.js")
+const Discord = require ("discord.js");
 const { version } = require('../../package.json');
 const ms = require('pretty-ms');
 const { version: discordjsVersion } = require('discord.js');
@@ -31,4 +31,4 @@ config: {
             .setTimestamp()
         );
     }
-}
+};

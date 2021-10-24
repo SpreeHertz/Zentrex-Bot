@@ -11,19 +11,19 @@ module.exports = {
         accessableby: "everyone"
     },
     run: async (bot, message, args) => {
-        if(!args[0]) return message.channel.send('**Please Enter A City Name!**')
-      
-        weather.find({search: args.join(" "), degreeType: 'C'}, function(err, result){
-        
-        if(err) message.channel.send(err.message);
+        if (!args[0]) return message.channel.send('**Please Enter A City Name!**');
 
-        if(result.length === 0) {
-            message.channel.send('**Please Enter A Valid Location.**')
+        weather.find({ search: args.join(" "), degreeType: 'C' }, function(err, result) {
+
+        if (err) message.channel.send(err.message);
+
+        if (result.length === 0) {
+            message.channel.send('**Please Enter A Valid Location.**');
             return undefined;
         }
 
-            var current = result[0].current;
-            var location = result[0].location;
+            const current = result[0].current;
+            const location = result[0].location;
 
             const embed = new MessageEmbed()
                 .setDescription(`**${current.skytext}**`)
@@ -39,10 +39,10 @@ module.exports = {
                 .addField('**Date**', `${current.date}`, true)
                 .addField('**Day**', `${current.day}`, true)
                 .setFooter(message.member.displayName, message.author.displayAvatarURL())
-                .setTimestamp()
+                .setTimestamp();
 
-            message.channel.send({embed})
+            message.channel.send({ embed });
 
         });
     }
-}
+};

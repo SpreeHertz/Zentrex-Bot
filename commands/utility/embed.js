@@ -1,18 +1,19 @@
 const { MessageEmbed } = require("discord.js");
 exports.run = async (client, msg, args) => {
-  if (!msg.member.hasPermission("ADMINISTRATOR"))
-    return msg.channel
+  if (!msg.member.hasPermission("ADMINISTRATOR")) {
+return msg.channel
       .send("You do not have the required permission to use this command.")
       .then(m => {
         setTimeout(() => {
           m.delete();
         }, 3000);
       });
-  let embed = new MessageEmbed();
+}
+  const embed = new MessageEmbed();
   msg
     .reply("What should the title of the embed be? if none then type `none`")
     .then(m => m.delete({ timeout: 30000 }));
-  let title = await msg.channel.awaitMessages(
+  const title = await msg.channel.awaitMessages(
     res => res.author.id === msg.author.id,
     {
       max: 1,
@@ -22,10 +23,11 @@ exports.run = async (client, msg, args) => {
 
   if (title.size) {
     if (title.first().content !== "none") {
-      if (title.first().length > 256)
-        return msg
+      if (title.first().length > 256) {
+return msg
           .reply("Description can not exceed 2048 characters.")
           .then(m => m.delete({ timeout: 5000 }));
+}
       embed.setTitle(title.first().content);
     }
   }
@@ -35,7 +37,7 @@ exports.run = async (client, msg, args) => {
       "What should the description of the embed be? if none then type `none`"
     )
     .then(m => m.delete({ timeout: 30000 }));
-  let description = await msg.channel.awaitMessages(
+  const description = await msg.channel.awaitMessages(
     res => res.author.id === msg.author.id,
     {
       max: 1,
@@ -45,10 +47,11 @@ exports.run = async (client, msg, args) => {
 
   if (description.size) {
     if (description.first().content !== "none") {
-      if (description.first().length > 2048)
-        return msg
+      if (description.first().length > 2048) {
+return msg
           .reply("Description can not exceed 2048 characters.")
           .then(m => m.delete({ timeout: 5000 }));
+}
       embed.setDescription(description.first().content);
     }
   }
@@ -56,7 +59,7 @@ exports.run = async (client, msg, args) => {
   msg
     .reply("What should the image of the embed be? if none then type `none`")
     .then(m => m.delete({ timeout: 30000 }));
-  let image = await msg.channel.awaitMessages(
+  const image = await msg.channel.awaitMessages(
     res => res.author.id === msg.author.id,
     {
       max: 1,
@@ -80,7 +83,7 @@ exports.run = async (client, msg, args) => {
       "What should the color of the embed be, either a hex color or a normal color."
     )
     .then(m => m.delete({ timeout: 30000 }));
-  let color = await msg.channel.awaitMessages(
+  const color = await msg.channel.awaitMessages(
     res => res.author.id === msg.author.id,
     {
       max: 1,
@@ -93,7 +96,7 @@ exports.run = async (client, msg, args) => {
   msg
     .reply("What should the footer of the embed be? if none then type `none`")
     .then(m => m.delete({ timeout: 30000 }));
-  let footer = await msg.channel.awaitMessages(
+  const footer = await msg.channel.awaitMessages(
     res => res.author.id === msg.author.id,
     {
       max: 1,
@@ -103,10 +106,11 @@ exports.run = async (client, msg, args) => {
 
   if (footer.size) {
     if (footer.first().content !== "none") {
-      if (footer.first().length > 2048)
-        return msg
+      if (footer.first().length > 2048) {
+return msg
           .reply("Footer can not exceed 2048 characters.")
           .then(m => m.delete({ timeout: 5000 }));
+}
       embed.setFooter(footer.first().content);
     }
   }

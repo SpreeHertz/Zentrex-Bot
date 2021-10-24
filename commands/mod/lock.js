@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const { Console } = require('console');
-const { Permissions } = require('discord.js')
+const { Permissions } = require('discord.js');
 
 module.exports = {
     config: {
@@ -9,13 +9,13 @@ module.exports = {
         aliases: []
     },
     run: async (bot, message, args) => {
-        let lockPermErr = new Discord.MessageEmbed()
+        const lockPermErr = new Discord.MessageEmbed()
         .setTitle("**User Permission Error!**")
-        .setDescription("**Sorry, you don't have permissions to use this! ❌**")
-        
-        if(!message.member.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS) ) return message.channel.send({embeds: [lockPermErr]});
+        .setDescription("**Sorry, you don't have permissions to use this! ❌**");
 
-        let channel = message.channel;
+        if (!message.member.permissions.has(Permissions.FLAGS.MANAGE_CHANNELS)) return message.channel.send({ embeds: [lockPermErr] });
+
+        const channel = message.channel;
 
         try {
             message.guild.roles.cache.forEach(role => {
@@ -24,10 +24,11 @@ module.exports = {
                     ADD_REACTIONS: false
                 });
             });
-        } catch (e) {
+        }
+ catch (e) {
             console.log(e);
         }
 
         message.channel.send(`Done | Channel Locked!<:greentick:897041996949123092> `);
     }
-}
+};

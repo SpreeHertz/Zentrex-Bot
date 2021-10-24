@@ -12,11 +12,11 @@ module.exports = {
         accessableby: "",
     },
     run: async (client, message, args) => {
-        let { body } = await superagent.get(`https://some-random-api.ml/animu/wink`);
+        const { body } = await superagent.get(`https://some-random-api.ml/animu/wink`);
         const embed = new Discord.MessageEmbed()
           .setColor("YELLOW")
           .setImage(body.link)
           .setTimestamp();
-        message.reply({embeds: [embed]});
+        message.reply({ embeds: [embed] });
     }
-}
+};

@@ -9,29 +9,30 @@ config: {
   usage: "announce #channel your message"
 },
   run: async (client, message, args) => {
-    if (!message.member.hasPermission(["ADMINISTRATOR"]))
-      return message.channel.send("You don't have premmsions to do that!");
+    if (!message.member.hasPermission(["ADMINISTRATOR"])) {return message.channel.send("You don't have premmsions to do that!");}
 
-    let inline = true;
-    let sayChannel =
+    const inline = true;
+    const sayChannel =
       message.mentions.channels.first() ||
       message.guild.channels.cache.get(args[0]);
-    if (!sayChannel)
-      return message.channel.send(
+    if (!sayChannel) {
+return message.channel.send(
         `<:Cross:778450163014303774> | ${message.author} mention a channel First`
       );
-    let sayMsg = args
+}
+    const sayMsg = args
       .slice(1)
       .join(" ")
       .split(" | ");
 
     if (!sayMsg[1]) sayMsg[1] == "FF7034";
-    if (!sayMsg)
-      return message.channel.send(
+    if (!sayMsg) {
+return message.channel.send(
         ` | Say Some Message To Announce`
       );
-    let role = message.member.highestRole;
-    let embed = new Discord.MessageEmbed()
+}
+    const role = message.member.highestRole;
+    const embed = new Discord.MessageEmbed()
       .setColor(sayMsg[1])
       .setDescription(sayMsg[0]);
 

@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const config = require('../../config');
-const { MessageAttachment } = require('discord.js')
-const fetch = import('node-fetch')
+const { MessageAttachment } = require('discord.js');
+const fetch = import('node-fetch');
 
 module.exports = {
     config: {
@@ -12,7 +12,7 @@ module.exports = {
         accessableby: "",
     },
     run: async (client, message, args) => {
-    
+
         const text = args.slice().join(' ');
 		if (!text) {
 			return message.channel.send(
@@ -31,6 +31,6 @@ module.exports = {
 		}
 		const attachment = new MessageAttachment(response.message, 'clyde.png');
 		return message.channel.send(attachment);
-  
+
     }
-}
+};

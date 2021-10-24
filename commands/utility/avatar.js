@@ -1,4 +1,3 @@
-  
 const discord = require("discord.js");
 
 module.exports = {
@@ -13,19 +12,21 @@ config : {
 
     if (message.mentions.users.first()) {
       target = message.mentions.users.first();
-    } else if (args[0]) {
+    }
+ else if (args[0]) {
       target = message.guild.members.cache.get(args[0]).user;
-    } else {
+    }
+ else {
       target = message.author;
     }
 
-    let avatar = target.displayAvatarURL({ dynamic: true, size: 2048 });
+    const avatar = target.displayAvatarURL({ dynamic: true, size: 2048 });
 
-    let embed = new discord.MessageEmbed();
+    const embed = new discord.MessageEmbed();
 
     embed.setDescription(`[Download Avatar](${avatar})`);
     embed.setImage(avatar);
     embed.setColor("RANDOM");
-    message.reply({embeds: [embed]});
+    message.reply({ embeds: [embed] });
   }
 };

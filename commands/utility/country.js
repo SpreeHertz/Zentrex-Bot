@@ -13,7 +13,7 @@ module.exports = {
     },
     run: async (client, message, args) => {
     const country = args.slice().join(' ');
-		if(!country) {
+		if (!country) {
 			return message.channel.send(
 				':x: Please provide a valid Country.',
 			);
@@ -29,7 +29,7 @@ module.exports = {
 				':x:An error occured, please try again!',
 			);
 		}
-		try{
+		try {
 			const data = response[0];
 			const embed = new MessageEmbed()
 				.setColor(config.embedcolor)
@@ -46,12 +46,12 @@ module.exports = {
 					{ name: 'Area', value: `\`\`\`${data.area.toLocaleString()}km\`\`\``, inline: true },
 					{ name: 'Languages', value: `\`\`\`${data.languages.map(lang => lang.name).join('/')}\`\`\`` },
 				);
-			message.reply({embeds: [embed]});
+			message.reply({ embeds: [embed] });
 		}
-		catch{
+		catch {
 			return message.channel.send(
 				':x: Please provide a valid country.',
 			);
 		}
     }
-}
+};

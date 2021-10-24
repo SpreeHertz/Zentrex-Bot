@@ -27,12 +27,14 @@ module.exports = {
       return message.channel.send(
         `${message.member}, I'm already here! You need something?`
       );
-    } else if (
+    }
+ else if (
       message.mentions.members.size &&
       message.mentions.members.first().id === message.author.id
     ) {
       return message.channel.send(`What?`);
-    } else if (message.mentions.members.size) {
+    }
+ else if (message.mentions.members.size) {
       return message.channel.send(
         embed
           .setColor("YELLOW")
@@ -41,7 +43,8 @@ module.exports = {
           )
           .setImage(url)
       );
-    } else {
+    }
+ else {
       return message.channel.send(
         `${message.member}, I can't poke your imaginary friend! :(`
       );

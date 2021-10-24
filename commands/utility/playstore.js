@@ -11,10 +11,11 @@ module.exports = {
         accessableby: "everyone"
     },
     run: async (bot, message, args) => {
-	    if (!args[0])
-      return message.channel.send(
+	    if (!args[0]) {
+return message.channel.send(
         `Please Give Something To Search - ${message.author.username}`
       );
+}
 
     PlayStore.search({
       term: args.join(" "),
@@ -24,13 +25,14 @@ module.exports = {
 
       try {
         App = JSON.parse(JSON.stringify(Data[0]));
-      } catch (error) {
+      }
+ catch (error) {
         return message.channel.send(
           `No Application Found - ${message.author.username}!`
         );
       }
 
-      let Embed = new Discord.MessageEmbed()
+      const Embed = new Discord.MessageEmbed()
         .setColor("RANDOM")
         .setThumbnail(App.icon)
         .setURL(App.url)
@@ -42,7 +44,7 @@ module.exports = {
         .setFooter(`Requested By ${message.author.username}`)
         .setTimestamp();
 
-      return message.reply({embeds: [embed]});
+      return message.reply({ embeds: [embed] });
     });
     }
-}
+};

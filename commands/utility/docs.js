@@ -2,12 +2,12 @@ const Discord = require('discord.js');
 const fetch = import('node-fetch');
 const config = require('../../config');
 
-module.exports= {
+module.exports = {
   config : {
 	aliases: [""],
 	name: 'docs',
 	description: 'Search the discord.js docs',
-	usage: config.prefix + 'docs message'},
+	usage: config.prefix + 'docs message' },
 
   run : async (client, message, args) => {
 	const searchQuery = args.slice().join(' ');
@@ -35,6 +35,5 @@ module.exports= {
 			return message.channel.send(embed3);
 		});
 }
-}
-
+};
 

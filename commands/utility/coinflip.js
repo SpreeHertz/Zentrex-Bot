@@ -15,7 +15,7 @@ module.exports = {
         else result = 'Tails';
         const embed = new MessageEmbed()
             .setColor("GREEN")
-            .setDescription(`**${message.member.displayName} Flipped ${result}**!`)
-        message.reply({embeds: [embed]});
+            .setDescription(`**${message.member.displayName} Flipped ${result}**!`);
+        message.reply({ embeds: [embed] });
     }
 };

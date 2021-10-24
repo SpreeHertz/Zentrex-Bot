@@ -13,29 +13,30 @@ module.exports = {
         if (!message.member.hasPermission("CHANGE_NICKNAME")) return message.channel.send("**You Dont Have Permissions To Change Nickname! - [CHANGE_NICKNAME]**");
 
         if (!message.guild.me.hasPermission("CHANGE_NICKNAME")) return message.channel.send("**I Dont Have Permissions To Change Nickname! - [CHANGE_NICKNAME]**");
-      
-        if (!args[0]) return message.channel.send("**<:error:897857752276299797> ERROR :- Please Enter A User!**\n`usage :- _setnick [user] (new name)`")
-      
-        let member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase() === args[0].toLocaleLowerCase()) || message.guild.members.cache.find(ro => ro.displayName.toLowerCase() === args[0].toLocaleLowerCase()) || message.member;
+
+        if (!args[0]) return message.channel.send("**<:error:897857752276299797> ERROR :- Please Enter A User!**\n`usage :- _setnick [user] (new name)`");
+
+        const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase() === args[0].toLocaleLowerCase()) || message.guild.members.cache.find(ro => ro.displayName.toLowerCase() === args[0].toLocaleLowerCase()) || message.member;
         if (!member) return message.channel.send("**Please Enter A Username!**");
 
-        if (member.roles.highest.comparePositionTo(message.guild.me.roles.highest) >= 0) return message.channel.send('**Cannot Set or Change Nickname Of This User!**')
+        if (member.roles.highest.comparePositionTo(message.guild.me.roles.highest) >= 0) return message.channel.send('**Cannot Set or Change Nickname Of This User!**');
 
         if (!args[1]) return message.channel.send("**Please Enter A Nickname**");
 
-        let nick = args.slice(1).join(' ');
+        const nick = args.slice(1).join(' ');
 
         try {
-        member.setNickname(nick)
+        member.setNickname(nick);
         const embed = new MessageEmbed()
             .setColor("GREEN")
-            .setDescription(`**Changed Nickname of ${member.displayName} to ${nick} <:greentick:897041996949123092>  **`)
-        message.reply({embeds: [embed]})
-        } catch {
-            return message.channel.send("**Missing Permissions - [CHANGE_NICKNAME]")
+            .setDescription(`**Changed Nickname of ${member.displayName} to ${nick} <:greentick:897041996949123092>  **`);
+        message.reply({ embeds: [embed] });
+        }
+ catch {
+            return message.channel.send("**Missing Permissions - [CHANGE_NICKNAME]");
         }
 
-        let channel = db.fetch(`modlog_${message.guild.id}`)
+        const channel = db.fetch(`modlog_${message.guild.id}`);
         if (!channel) return;
 
         const sembed = new MessageEmbed()
@@ -50,8 +51,8 @@ module.exports = {
             .addField("**Date**", message.createdAt.toLocaleString())
             .setTimestamp();
 
-            var sChannel = message.guild.channels.cache.get(channel)
+            const sChannel = message.guild.channels.cache.get(channel);
             if (!sChannel) return;
-            sChannel.send(sembed)
+            sChannel.send(sembed);
     }
-}
+};

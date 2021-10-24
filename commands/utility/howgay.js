@@ -11,25 +11,24 @@ module.exports = {
   usage: "howgay <Mention Member>",
   },
   run: async (bot, message, args) => {
-    //Start
+    // Start
 
-    let Member =
+    const Member =
       message.mentions.users.first() ||
       message.guild.member(args[0]) ||
       message.author;
 
-    let Result = Math.floor(Math.random() * 101);
+    const Result = Math.floor(Math.random() * 101);
 
-    let embed = new MessageEmbed()
+    const embed = new MessageEmbed()
       .setColor("FF0000")
       .setTitle(`About your Gayness`)
       .setDescription(`${Member.username} Is ${Result}% Gay ðŸ³ï¸â€ðŸŒˆ`)
       .setFooter(`Requested by ${message.author.username}`)
       .setTimestamp();
 
-    message.reply({embeds: [embed]});
+    message.reply({ embeds: [embed] });
 
-    //End
+    // End
   }
 };
- 
