@@ -8,13 +8,13 @@ module.exports = {
         aliases: []
     },
     run: async (bot, message, args) => {
-        let lockPermErr = new Discord.MessageEmbed()
+        const lockPermErr = new Discord.MessageEmbed()
         .setTitle("**User Permission Error!**")
-        .setDescription("**Sorry, you don't have permissions to use this! ❌**")
-        
-        if(!message.channel.permissionsFor(message.member).has("ADMINISTRATOR") ) return message.channel.send(lockPermErr);
+        .setDescription("**Sorry, you don't have permissions to use this! ❌**");
 
-        let channel = message.channel;
+        if (!message.channel.permissionsFor(message.member).has("ADMINISTRATOR")) return message.channel.send(lockPermErr);
+
+        const channel = message.channel;
 
         try {
             message.guild.roles.cache.forEach(role => {
@@ -23,10 +23,11 @@ module.exports = {
                     ADD_REACTIONS: true
                 });
             });
-        } catch (e) {
+        }
+ catch (e) {
             console.log(e);
         }
 
         message.channel.send(`Done | Channel Unlocked!`);
     }
-}
+};

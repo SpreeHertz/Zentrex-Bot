@@ -12,10 +12,11 @@ module.exports = {
         accessableby: "",
     },
     run: async (client, message, args) => {
- if (!args[0])
-      return message.channel.send(
+ if (!args[0]) {
+return message.channel.send(
         `Please Give Something To Search - ${message.author.username}`
       );
+}
 
     AppleStore.search({
       term: args.join(" "),
@@ -26,17 +27,18 @@ module.exports = {
 
       try {
         App = JSON.parse(JSON.stringify(Data[0]));
-      } catch (error) {
+      }
+ catch (error) {
         return message.channel.send(
           `No Application Found - ${message.author.username}!`
         );
       }
-      
-      let Description = App.description.length > 200 ? `${App.description.substr(0, 200)}...` : App.description
-      let Price = App.free ? "FREE" : `$${App.price}`;
-      let Score = App.score.toFixed(1);
 
-      let Embed = new Discord.MessageEmbed()
+      const Description = App.description.length > 200 ? `${App.description.substr(0, 200)}...` : App.description;
+      const Price = App.free ? "FREE" : `$${App.price}`;
+      const Score = App.score.toFixed(1);
+
+      const Embed = new Discord.MessageEmbed()
         .setColor(config.embedcolor)
         .setThumbnail(App.icon)
         .setURL(App.url)
@@ -48,7 +50,7 @@ module.exports = {
         .setFooter(`Requested By ${message.author.username}`)
         .setTimestamp();
 
-      return message.reply({embeds: [embed]});
+      return message.reply({ embeds: [embed] });
     });
     }
-}
+};

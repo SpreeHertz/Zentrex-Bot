@@ -12,7 +12,7 @@ module.exports = {
         usage: "",
    },
     run: async (client, message, args) => {
-        
+
     const d = moment.duration(client.uptime);
     const days = (d.days() == 1) ? `${d.days()} day` : `${d.days()} days`;
     const hours = (d.hours() == 1) ? `${d.hours()} hour` : `${d.hours()} hours`;
@@ -29,13 +29,13 @@ module.exports = {
       RAM       :: ${totalMemMb} MB
       RAM USAGE :: ${usedMemMb} MB
     `;
-    
+
     const embed = new MessageEmbed()
       .setTitle('Zeus Bot\'s Statistics')
       .setDescription(`\`\`\`asciidoc\n${clientStats}\`\`\``)
-      .setFooter(message.member.displayName,  message.author.displayAvatarURL({ dynamic: true }))
+      .setFooter(message.member.displayName, message.author.displayAvatarURL({ dynamic: true }))
       .setTimestamp()
       .setColor(message.guild.me.displayHexColor);
-    message.reply({embeds: [embed]});
+    message.reply({ embeds: [embed] });
     }
-}
+};

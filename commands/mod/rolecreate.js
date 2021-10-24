@@ -1,4 +1,3 @@
-  
 const Discord = require("discord.js");
 const toHex = require("colornames");
 
@@ -11,33 +10,33 @@ module.exports = {
   },
 
  run: async (client, message, args) => {
-        const name = args.slice(1).join(" ")
-        const regex = !/[^a-zA-Z0-9]+/g.test(name)
+        const name = args.slice(1).join(" ");
+        const regex = !/[^a-zA-Z0-9]+/g.test(name);
         if (!message.member.hasPermission("MANAGE_ROLES")) {
-        return message.channel.send("You don't have enough Permissions")
+        return message.channel.send("You don't have enough Permissions");
         }
         if (!message.guild.me.hasPermission("MANAGE_ROLES")) {
-        return message.channel.send("I don't have enough permissions to do this")
+        return message.channel.send("I don't have enough permissions to do this");
         }
         if (!args[0]) {
-        return message.channel.send("`Usage: <prefix> createrole <colorname> <Name>`")
+        return message.channel.send("`Usage: <prefix> createrole <colorname> <Name>`");
         }
         if (!name) {
-        return message.channel.send("**<:error:897857752276299797> Error :- You need to specify a name for your Role**\n`usage :- _rolecreate (name)`")
+        return message.channel.send("**<:error:897857752276299797> Error :- You need to specify a name for your Role**\n`usage :- _rolecreate (name)`");
         }
         if (regex === false) {
-        return message.channel.send("That is not valid role name. It can contain only letters and numbers")
+        return message.channel.send("That is not valid role name. It can contain only letters and numbers");
         }
         if (name.length > 100) {
-        return message.channel.send("Your role can't be more than 100 characters long")
+        return message.channel.send("Your role can't be more than 100 characters long");
         }
         message.guild.roles.create({
             data: {
                 name: name,
                 color: toHex(args[0])
             }
-        })
-        let embed = new Discord.MessageEmbed()
+        });
+        const embed = new Discord.MessageEmbed()
         .setAuthor(`${message.author.username} - (${message.author.id})`, message.author.displayAvatarURL())
         .setColor("RED")
         .setDescription(`
@@ -46,7 +45,7 @@ module.exports = {
 **Role Color: ** ${args[0]}
 **Channel: ** ${message.channel}
 **By: ** ${message.member}
-      `)
-   message.reply({embeds: [embed]});
+      `);
+   message.reply({ embeds: [embed] });
     }
-}
+};

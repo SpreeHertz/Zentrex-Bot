@@ -12,7 +12,7 @@ module.exports = {
         accessableby: "",
     },
     run: async (client, message, args) => {
-        let victim = message.mentions.users.first() || (args.length > 0 ? message.users.cache.filter(e => e.username.toLowerCase().includes(args.join(" ").toLowerCase())).first(): message.author) || message.author;
+        const victim = message.mentions.users.first() || (args.length > 0 ? message.users.cache.filter(e => e.username.toLowerCase().includes(args.join(" ").toLowerCase())).first() : message.author) || message.author;
         const { body } = await superagent
           .get("https://nekos.life/api/v2/img/pat");
               const embed = new Discord.MessageEmbed()
@@ -20,9 +20,9 @@ module.exports = {
               .setTitle("Here's your Pat, 👀")
           .setDescription(`${victim} Pats ${message.author}`)
           .setImage(body.url)
-           .setTimestamp()
-  
-      
-               message.reply({embeds: [embed]});
+           .setTimestamp();
+
+
+               message.reply({ embeds: [embed] });
     }
-}
+};

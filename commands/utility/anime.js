@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const config = require('../../config');
-const Scraper = require('mal-scraper')
+const Scraper = require('mal-scraper');
 
 module.exports = {
     config: {
@@ -11,28 +11,28 @@ module.exports = {
         accessableby: "",
     },
     run: async (client, message, args) => {
-        let Text = args.join(" ");
+        const Text = args.join(" ");
 
         if (!Text) return message.channel.send(`Please Give Something!`);
-      
+
         if (Text.length > 200) return message.channel.send(`Text Limit - 200`);
-      
-        let Msg = await message.channel.send(`**Searching It For You **`);
-      
-        let Replaced = Text.replace(/ /g, " ");
-      
+
+        const Msg = await message.channel.send(`**Searching It For You **`);
+
+        const Replaced = Text.replace(/ /g, " ");
+
         await Msg.delete();
-      
+
         let Anime;
-      
+
         let Embed;
-      
+
         try {
-      
+
         Anime = await Scraper.getInfoFromName(Replaced);
-      
+
         if (!Anime.genres[0] || Anime.genres[0] === null) Anime.genres[0] = "None";
-      
+
         Embed = new Discord.MessageEmbed()
         .setColor("YELLOW")
         .setURL(Anime.url)
@@ -48,14 +48,15 @@ module.exports = {
         .setThumbnail(Anime.picture)
         .setFooter(`Score - ${Anime.score}`)
         .setTimestamp();
-      
-        } catch (error) {
-          console.log(error)
-          return message.channel.send(`No Anime Found!`)
-         
-        };
-      
-        return message.reply({embeds: [embed]});
+
+        }
+ catch (error) {
+          console.log(error);
+          return message.channel.send(`No Anime Found!`);
+
+        }
+
+        return message.reply({ embeds: [embed] });
     }
-}
+};
 

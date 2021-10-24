@@ -1,7 +1,7 @@
 const { Discord, discord } = require("discord.js");
 const { MessageEmbed } = require("discord.js");
 const moment = require("moment");
-const fetch = require("node-fetch")
+const fetch = require("node-fetch");
 
 module.exports = {
     config: {
@@ -15,12 +15,12 @@ module.exports = {
 
        try {
 
-  if (!args[0]) return message.channel.send(`Please Give Me A Username!`)
-    
+  if (!args[0]) return message.channel.send(`Please Give Me A Username!`);
+
   fetch(`https://api.github.com/users/${args.join('-')}`)
     .then(res => res.json()).then(body => {
-      if(body.message) return message.channel.send(`User Not Found | Please Give Me A Valid Username!`);
-    let { login, avatar_url, name, id, html_url, public_repos, followers, following, location, created_at, bio } = body;
+      if (body.message) return message.channel.send(`User Not Found | Please Give Me A Valid Username!`);
+    const { login, avatar_url, name, id, html_url, public_repos, followers, following, location, created_at, bio } = body;
 
             const embed = new MessageEmbed()
             .setAuthor(`${login} Information!`, avatar_url)
@@ -34,15 +34,16 @@ module.exports = {
             .addField(`Following`, `${following}`, true)
             .addField(`Location`, `${location || "No Location"}`)
             .addField(`Account Created`, moment.utc(created_at).format("dddd, MMMM, Do YYYY"))
-            .setFooter(`Tysm For Using Me! ${message.author.username}`)
+            .setFooter(`Tysm For Using Me! ${message.author.username}`);
 
-            message.reply({embeds: [embed]})
+            message.reply({ embeds: [embed] });
 
-    })
+    });
 
-        } catch (error) {
+        }
+ catch (error) {
             console.log(`[Commands] [github] Getting Error In github Command :\n`, error);
-            return message.channel.send(`Something Went Wrong Try Again Later!`)
+            return message.channel.send(`Something Went Wrong Try Again Later!`);
         }
     }
 };

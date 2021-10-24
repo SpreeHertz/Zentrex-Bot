@@ -27,12 +27,14 @@ module.exports = {
       return message.channel.send(
         `B~Baka ${message.member}! Stop that~ it tickles!`
       );
-    } else if (
+    }
+ else if (
       message.mentions.members.size &&
       message.mentions.members.first().id === message.author.id
     ) {
       return message.channel.send(`Wai~ Seriously!?`);
-    } else if (message.mentions.members.size) {
+    }
+ else if (message.mentions.members.size) {
       return message.channel.send(
         embed
           .setColor("YELLOW")
@@ -43,7 +45,8 @@ module.exports = {
           )
           .setImage(url)
       );
-    } else {
+    }
+ else {
       return message.channel.send(
         embed.setColor("YELLOW").setImage(url)
       );

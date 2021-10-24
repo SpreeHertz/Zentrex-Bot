@@ -20,6 +20,6 @@ module.exports = {
 				message.author.tag,
 				message.author.displayAvatarURL({ dynamic: true })
 			);
-		message.reply({embeds: [embed]});
+		message.reply({ embeds: [embed] });
 	}
 };

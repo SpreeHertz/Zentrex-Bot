@@ -8,14 +8,14 @@ module.exports = {
         aliases: ["membercount","mc"]
     },
   run: async (client, message, args) => {
-    
-    let embed = new discord.MessageEmbed()
+
+    const embed = new discord.MessageEmbed()
     .setAuthor(
     `Members`)
     .setDescription(`${message.guild.memberCount}`)
     .setColor("RANDOM")
-    .setTimestamp(message.timestamp = Date.now())
-    
-    message.reply({embeds: [embed]})
+    .setTimestamp(message.timestamp = Date.now());
+
+    message.reply({ embeds: [embed] });
   }
-}
+};

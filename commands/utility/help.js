@@ -1,7 +1,7 @@
-const Discord = require("discord.js")
-const db = require("quick.db")
-const { MessageEmbed } = require("discord.js")
-const { PREFIX } = require("../../config")
+const Discord = require("discord.js");
+const db = require("quick.db");
+const { MessageEmbed } = require("discord.js");
+const { PREFIX } = require("../../config");
 
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
   usage: "help"
   },
   run: async (client, message, args) => {
-  prefix = db.fetch(`prefix_${message.guild.id}`)
+  prefix = db.fetch(`prefix_${message.guild.id}`);
   const sectionEmbed = new Discord.MessageEmbed()
    .setTitle('Zentrex Help Desk')
    .setColor('FF0000')
@@ -22,8 +22,8 @@ module.exports = {
    .addField('<:give_name:897042368547651605>  Moderation', 'Shows The List Of Moderation Commands.')
    .addField('<:give_name:897042368547651605>  Utility', 'Shows The List Of Utility Commands.')
    .setFooter(client.user.tag, client.user.displayAvatarURL());
- 
-const infoEmbed = new Discord.MessageEmbed() 
+
+const infoEmbed = new Discord.MessageEmbed()
    .setTitle('<:b_redarrow2:897052268728303646> Information Commands.')
    .setColor('FF0000')
    .setDescription(`**\nMy prefix for \`${message.guild.name}\`  is  **_**`)
@@ -33,7 +33,7 @@ const infoEmbed = new Discord.MessageEmbed()
    .addField('UpTime Command', 'For Example :- _uptime')
    .addField('BotInfo Command', 'For Example :- _botinfo')
   .addField('Stats Command', 'For Example :- _stats.');
- 
+
 const funEmbed = new Discord.MessageEmbed()
    .setTitle('<:b_redarrow2:897052268728303646> Fun Commands.')
    .setColor('FF0000')
@@ -100,7 +100,7 @@ const moderationEmbed = new Discord.MessageEmbed()
     .addField('SetModLog Command', 'For Example :- _setmodlog [channel mention]')
     .addField('SetMuteRole Command', 'For Example :- _setmuterole [role mention/id]')
     .addField('SlowMode Command', 'For Example :- _slowmode (reason)');
- 
+
 const utilityEmbed = new Discord.MessageEmbed()
    .setTitle('<:b_redarrow2:897052268728303646> Utility Commands.')
    .setColor('FF0000')
@@ -115,11 +115,11 @@ const utilityEmbed = new Discord.MessageEmbed()
    .addField('Avatar 2 Command', 'For Example :- _av2 [user]')
     .addField('Afk Command','_afk (reason).')
     .addField('Remove Afk Command','_rafk');
-  
+
 if (!args[0]) return message.channel.send(sectionEmbed);
 if (args[0] == 'information') return message.channel.send(infoEmbed);
 else if (args[0] == 'fun') return message.channel.send(funEmbed);
 else if (args[0] == 'utility') return message.channel.send(utilityEmbed);
-else if (args[0] == 'moderation') return message.channel.send(moderationEmbed)
+else if (args[0] == 'moderation') return message.channel.send(moderationEmbed);
   }
 };

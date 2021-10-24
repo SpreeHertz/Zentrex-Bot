@@ -61,6 +61,6 @@ module.exports = {
 					'LL'
 				)} ${moment(message.guild.createdTimestamp).fromNow()}`
 			);
-		message.reply({embeds: [embed]});
+		message.reply({ embeds: [embed] });
 	}
 };

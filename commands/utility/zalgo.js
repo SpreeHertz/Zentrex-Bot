@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
-const { MessageEmbed } = require('discord.js')
+const { MessageEmbed } = require('discord.js');
 const config = require('../../config');
-const Zalgo = require('to-zalgo')
+const Zalgo = require('to-zalgo');
 
 module.exports = {
     config: {
@@ -12,11 +12,11 @@ module.exports = {
         accessableby: "",
     },
     run: async (client, message, args) => {
-    
+
         const embed = new MessageEmbed()
      .setColor(config.embedcolor)
      .setDescription(`${Zalgo(args.join(" "))}`)
-     .setTimestamp()
-    message.reply({embeds: [embed]})
+     .setTimestamp();
+    message.reply({ embeds: [embed] });
     }
-}
+};

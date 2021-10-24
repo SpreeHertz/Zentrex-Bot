@@ -1,14 +1,14 @@
 const Discord = require("discord.js");
-const { createCanvas, loadImage } = require('canvas')
+const { createCanvas, loadImage } = require('canvas');
 
 module.exports = {
   config : {
   name: "whatsapp",
-  aliases: ["wa"]},
+  aliases: ["wa"] },
   run : async (client, message, args, prefix) => {
 
-    let user = message.mentions.users.first() || client.users.cache.get(args[0]) ||
-      message.author
+    const user = message.mentions.users.first() || client.users.cache.get(args[0]) ||
+      message.author;
 
     const avatar = await loadImage(
       user.displayAvatarURL({ format: "png" })
@@ -29,4 +29,4 @@ module.exports = {
     message.channel.send(attachment);
 
   }
-}
+};

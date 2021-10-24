@@ -33,7 +33,8 @@ module.exports = {
             `${message.member.displayName}, you really do deserve a slapping.`
           )
       );
-    } else {
+    }
+ else {
       const { url } = await kiss().catch(() => {});
 
       if (!url) return message.channel.send(`Could not connect to nekos.life`);
@@ -43,7 +44,8 @@ module.exports = {
         message.mentions.members.first().id === message.author.id
       ) {
         return message.channel.send(`S~seriously?!`);
-      } else if (message.mentions.members.size) {
+      }
+ else if (message.mentions.members.size) {
         return message.channel.send(
           embed
             .setColor("YELLOW")
@@ -52,7 +54,8 @@ module.exports = {
             )
             .setImage(url)
         );
-      } else {
+      }
+ else {
         return message.channel.send(
           `Sorry ${message.member}, I can't seem to locate your imaginary friend.`
         );

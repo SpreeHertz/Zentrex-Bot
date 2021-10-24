@@ -5,7 +5,7 @@ module.exports = {
   config : {
 	name: 'toilet',
 	aliases: [],
-	description: 'Flushes someone in a toilet! No idea how you will wanna go into a toilet'},
+	description: 'Flushes someone in a toilet! No idea how you will wanna go into a toilet' },
 
   run : async (client, message, args) => {
 	const member = message.mentions.members.first() || message.member;
@@ -21,4 +21,4 @@ module.exports = {
 	ctx.drawImage(avatar, 135, 350, 205, 205);
 	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), `toilet_${member.user.username}.jpg`);
 	message.reply({ files: [attachment], allowedMentions: { repliedUser: false } });
-}}
+} };

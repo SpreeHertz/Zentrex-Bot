@@ -1,4 +1,4 @@
-const Discord = require("discord.js")
+const Discord = require("discord.js");
 
 module.exports = {
   config:{
@@ -8,29 +8,30 @@ module.exports = {
     category: 'Fun',
     guildOnly: true,
     run: async (bot, message, args) => {
-        let User = await message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.guild.members.cache.find(r => r.displayName.toLowerCase().includes() === args.join(' ').toLocaleLowerCase())
-        let gayrate = Math.floor(Math.random() * 101)
+        const User = await message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase().includes() === args.join(' ').toLocaleLowerCase()) || message.guild.members.cache.find(r => r.displayName.toLowerCase().includes() === args.join(' ').toLocaleLowerCase());
+        const gayrate = Math.floor(Math.random() * 101);
 
 
-        if(!User){
-            let gayrateEmbed = new Discord.MessageEmbed()
+        if (!User) {
+            const gayrateEmbed = new Discord.MessageEmbed()
                 .setTitle("Dumbrate Machine")
                 .setColor("RANDOM")
                 .setDescription("You are `" + gayrate + "%` dumb! :Dumb:")
-                .setFooter(message.client.user.username, message.client.user.avatarURL())
+                .setFooter(message.client.user.username, message.client.user.avatarURL());
             message.channel.send(gayrateEmbed).catch(e => {
-                console.log(e)
-            })
-        } else {
-            let argsEmbed = new Discord.MessageEmbed()
+                console.log(e);
+            });
+        }
+ else {
+            const argsEmbed = new Discord.MessageEmbed()
                 .setTitle("Dumbrate Machine")
                 .setColor("RANDOM")
                 .setDescription(`${User.username} is \`${gayrate}%\` dumb! :Dumb:`)
-                .setFooter(message.client.user.username, message.client.user.avatarURL())
+                .setFooter(message.client.user.username, message.client.user.avatarURL());
             message.channel.send(argsEmbed).catch(e => {
-                console.log(e)
-            })
+                console.log(e);
+            });
         }
     }
  }
-}
+};

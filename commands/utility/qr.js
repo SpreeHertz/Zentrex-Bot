@@ -6,15 +6,14 @@ module.exports = {
     aliases: ["qrcode"],
     category: "Utility",
     description: "Coneverts the provided link to a qr code cool ?",
-    example: `c!qr https://youtube.com`},
+    example: `c!qr https://youtube.com` },
 
     run: async (client, message, args) => {
-    
-        let link = (args[0])
-        let qrlink = `http://api.qrserver.com/v1/create-qr-code/?data=${link}&size=200x200`
 
-        if (!link) 
-        return message.channel.send(` Please provide a link !!`)
+        const link = (args[0]);
+        const qrlink = `http://api.qrserver.com/v1/create-qr-code/?data=${link}&size=200x200`;
+
+        if (!link) {return message.channel.send(` Please provide a link !!`);}
 
         if (require('is-url')(link)) {
             const attachment = new Discord.MessageAttachment(qrlink, 'qrcode.png');
@@ -24,14 +23,15 @@ module.exports = {
             .attachFiles(attachment)
             .setColor(message.guild.me.displayHexColor)
             .setImage('attachment://qrcode.png')
-            .setFooter(`Requested by ${message.author.username}`,  message.author.displayAvatarURL({ dynamic: true }))
-            .setTimestamp()
+            .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true }))
+            .setTimestamp();
 
-            message.reply({embeds: [embed]})
+            message.reply({ embeds: [embed] });
 
-        } else {
-            message.reply(`${emoji.Error} Error provide a valid link which contain \`https://\``)
+        }
+ else {
+            message.reply(`${emoji.Error} Error provide a valid link which contain \`https://\``);
         }
 
     }
-}
+};
